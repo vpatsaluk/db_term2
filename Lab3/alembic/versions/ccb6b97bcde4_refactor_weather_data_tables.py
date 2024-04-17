@@ -20,10 +20,10 @@ depends_on: Union[str, Sequence[str], None] = None
 
 def upgrade() -> None:
     op.execute("""
-    INSERT INTO wind_data(id, wind_speed_kph, wind_speed_mph, wind_direction, wind_degree)
-    SELECT id, wind_kph, wind_mph, wind_direction, wind_degree FROM weather_data
+    INSERT INTO precip_data(id, precip_mm, precip_in)
+    SELECT id, precip_mm, precip_in FROM weather_data
     """)
 
 
 def downgrade() -> None:
-    op.drop_table('wind_data')
+    op.drop_table('precip_data')

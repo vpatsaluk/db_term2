@@ -8,7 +8,8 @@ weather_data = Table('weather_data', metadata,
     Column('country', String),
     Column('wind_degree', Integer),
     Column('wind_kph', Float),
-    Column('wind_mph', Float),
+    Column('precip_mm', Float),
+    Column('precip_in', Float),
     Column('wind_direction', String),
     Column('last_updated', Date),
     Column('sunrise', Time),
@@ -20,7 +21,8 @@ def query_weather(country, date):
             weather_data.columns.country,
             weather_data.columns.wind_degree,
             weather_data.columns.wind_kph,
-            weather_data.columns.wind_mph,
+            weather_data.columns.precip_mm,
+            weather_data.columns.precip_in,
             weather_data.columns.wind_direction,
             weather_data.columns.last_updated,
             weather_data.columns.sunrise
@@ -31,8 +33,8 @@ def query_weather(country, date):
 
         result = connection.execute(query)
         for row in result:
-            print(f"Country: {row[0]}, Wind Degree: {row[1]}, Wind KPH: {row[2]}, Wind MPH: {row[3]}, "
-                  f"Wind Direction: {row[4]}, Last Updated: {row[5]}, Sunrise: {row[6]}")
+            print(f"Country: {row[0]}, Wind Degree: {row[1]}, Wind KPH: {row[2]}, Precip mm: {row[3]}, "
+                  f"Precip in {row[4]}, Wind Direction: {row[5]}, Last Updated: {row[6]}, Sunrise: {row[7]}")
 
 country_input = input("Enter the country: ")
 date_input = input("Enter the date (YYYY-MM-DD): ")

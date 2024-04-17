@@ -19,12 +19,12 @@ depends_on: Union[str, Sequence[str], None] = None
 
 
 def upgrade() -> None:
-    op.add_column('wind_data', sa.Column('is_it_safe_to_go_out', sa.Boolean(), nullable=True,
+    op.add_column('precip_data', sa.Column('is_it_safe_to_go_out', sa.Boolean(), nullable=True,
                  server_default=sa.text('False')))
     op.execute("""
-    UPDATE wind_data
-    SET is_it_safe_to_go_out = (wind_speed_kph < 10)
+    UPDATE precip_data
+    SET is_it_safe_to_go_out = (precip_mm < 0.5)
     """)
 
 def downgrade() -> None:
-    op.drop_column('wind_data', 'is_it_safe_to_go_out')
+    op.drop_column('precip_data', 'is_it_safe_to_go_out')

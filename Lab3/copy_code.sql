@@ -1,0 +1,2 @@
+COPY weather_data TO 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/weather_data.csv' DELIMITER ',' CSV HEADER;
+COPY precip_data TO 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/precip_data.csv' DELIMITER ',' CSV HEADER;

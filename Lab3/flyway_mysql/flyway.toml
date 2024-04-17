@@ -1,6 +1,6 @@
 databaseType = "MySql"
-id = "1db35dbb-a9a2-4f36-af59-c6d0b0894e14"
-name = "flyway_weather_db_mysql"
+id = "a001f116-7c65-4d4c-a00d-cbc5d6fa9a5f"
+name = "flyway_mysql"
 
 [flyway]
 locations = [ "filesystem:migrations" ]
@@ -22,6 +22,7 @@ filterFile = "filter.rgf"
 [redgateCompare.mysql.options.ignores]
 ignoreNewlinesInTextObjects = "off"
 
-[environments.mysql]
-url = "jdbc:mysql://localhost:3306/weather_db_mysql"
+[environments.target1]
+url = "jdbc:mysql://localhost:3306"
 schemas = [ "weather_db_mysql" ]
+displayName = "migrate_to_mysql"
